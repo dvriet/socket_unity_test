@@ -7,6 +7,9 @@
 <body>
 Welcome to the Socket.IO Unity Browser Client Example!
 
+Open this page in your browser console to send messages to Unity.
+Or to see messages from Unity.
+
 <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
 <script>
     const socket = io('https://socket-unity-test.onrender.com');
@@ -15,6 +18,7 @@ Welcome to the Socket.IO Unity Browser Client Example!
         console.log('Connected to server as browser client');
     });
 
+    // Listen for messages from Unity via the server
     socket.on('messageToBrowser', (data) => {
         console.log('Message from Unity:', data);
     });
