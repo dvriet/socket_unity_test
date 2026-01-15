@@ -26,8 +26,40 @@ io.on('connection', (socket) => {
 });
 
 app.get('/', (req, res) => {
-    // Send back contents of index.html
-    res.sendFile(__dirname + '/index.html');
+    res.send('<h1>Socket.IO-server is actief and listening for new connections.</h1>' +
+        '<p>Create index.html with this code and open it in a browser.' +
+        'It will then connect to it </p>' +
+        '<!DOCTYPE html>\n' +
+        '<html lang="en">\n' +
+        '<head>\n' +
+        '    <meta charset="UTF-8">\n' +
+        '    <title>Title</title>\n' +
+        '</head>\n' +
+        '<body>\n' +
+        'Welcome to the Socket.IO Unity Browser Client Example!\n' +
+        '\n' +
+        '<script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>\n' +
+        '<script>\n' +
+        '    const socket = io(\'https://socket-unity-test.onrender.com\');\n' +
+        '\n' +
+        '    socket.on(\'connect\', () => {\n' +
+        '        console.log(\'Connected to server as browser client\');\n' +
+        '    });\n' +
+        '\n' +
+        '    socket.on(\'messageToBrowser\', (data) => {\n' +
+        '        console.log(\'Message from Unity:\', data);\n' +
+        '    });\n' +
+        '\n' +
+        '    // Send a message to Unity via the server\n' +
+        '    function sendMessageToUnity() {\n' +
+        '        socket.emit(\'messageFromBrowser\', {text: \'Hello from browser!\'});\n' +
+        '    }\n' +
+        '</script>\n' +
+        '<button onclick="sendMessageToUnity()">Send to Unity</button>\n' +
+        '\n' +
+        '</body>\n' +
+        '</html>\n');
+
 });
 
 const port = process.env.PORT || 3000;
