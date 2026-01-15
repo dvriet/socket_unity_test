@@ -26,7 +26,8 @@ io.on('connection', (socket) => {
 });
 
 app.get('/', (req, res) => {
-    res.send('<h1>Socket.IO-server is actief</h1>');
+    // Send back contents of index.html
+    res.sendFile(__dirname + '/index.html');
 });
 
 const port = process.env.PORT || 3000;
