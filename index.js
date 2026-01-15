@@ -25,6 +25,10 @@ io.on('connection', (socket) => {
     });
 });
 
+app.get('/', (req, res) => {
+    res.send('<h1>Socket.IO-server is actief</h1>');
+});
+
 const port = process.env.PORT || 3000;
 http.listen(port, () => {
     console.log('Socket.IO-server draait op poort 3000');
