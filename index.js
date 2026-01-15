@@ -32,5 +32,5 @@ app.get('/', (req, res) => {
 
 const port = process.env.PORT || 3000;
 http.listen(port, () => {
-    console.log('Socket.IO-server draait op poort 3000');
+    console.log(`Socket.IO-server draait op poort ${port}`);
 });
