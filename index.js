@@ -22,6 +22,13 @@ io.on('connection', (socket) => {
         console.log('Bericht doorgestuurd naar Unity:', data);
     });
 
+    // Relay berichten van Unity naar de browser
+    socket.on('messageFromUnity', (data) => {
+        console.log('Bericht van unity:', data);
+        io.emit('messageToBrowser', data); // Doorsturen naar Unity
+        console.log('Bericht doorgestuurd naar Browser:', data);
+    });
+
     socket.on('disconnect', () => {
         console.log('Client ontkoppeld:', socket.id);
     });
